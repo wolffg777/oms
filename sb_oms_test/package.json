@@ -1,0 +1,21 @@
+{
+  "name": "sb_oms",
+  "version": "1.0.0",
+  "description": "Internal operations tool for managing the order pipeline.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolffg777/sb_oms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wolffg777/sb_oms/issues"
+  },
+  "homepage": "https://github.com/wolffg777/sb_oms#readme"
+}

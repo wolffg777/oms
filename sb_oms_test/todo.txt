@@ -1,0 +1,54 @@
+OMS TODO 
+
+DESIRED FUNC FOR MVP.V1: 
+- view all jobs check  
+- CRUD jobs completely 
+    create check 
+    READ check 
+    UPDATE TODO 
+        job details seem good, status doesn't update 
+    DELETE check 
+- search CHECK
+- filters 
+- change status view on job 
+- be able to edit job details (edd, notes, status) from joblist (not forced to click)
+- bulk edits 
+
+
+ULTIMATE PLAN: 
+Login screen 
+    auth 
+takes you to one of 3 views:  
+Sales View 
+- see jobs under your am 
+- search for them 
+Purchasing View 
+- tracking (vpps)
+- 
+Operations View 
+
+
+
+    1. Build out partials (to decide)
+        backend implementation
+        make sure you can see it 
+        POINT OF PARTIALS IF TRACKING SUPPORTED...? 
+
+
+
+
+
+
+
+List of Current Tools: 
+- rockaway promo 
+- edd cal. = Yesenia tool 
+- atkins = Jackie tool 
+- ... 
+
+
+
+
+NEW SYSTEM: 
+have it so that people can't see orders that aren't assigned to them in that moment
+ie force others to transition 
