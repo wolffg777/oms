@@ -7,9 +7,11 @@ const prisma = require("../prismaClient.js");
 // Jobs — full CRUD
 
 // CREATE JOB
-// curl -X POST http://localhost:3001/api/jobs \
-//   -H "Content-Type: application/json" \
-//   -d '{"name":"Job1","client":"Lincoln High School","notes":"Test test test"}'
+/*
+curl -X POST http://localhost:3001/api/jobs \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Job3","client":"Lincoln High School","notes":"Test test test"}'
+*/
 router.post("/", async (req, res, next) => {
   // create Job row
   try {
