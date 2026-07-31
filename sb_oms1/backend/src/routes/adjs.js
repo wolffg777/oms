@@ -21,8 +21,10 @@ router.post("/", async (req, res, next) => {
 });
 
 // READ ALL ADJS
-// curl -X GET http://localhost:3001/api/adjs \
-// -H "Content-Type: application/json"
+/*
+curl -X GET http://localhost:3001/api/adjs \
+-H "Content-Type: application/json"
+*/
 router.get("/", async (req, res, next) => {
   try {
     const adjs = await prisma.invAdjustment.findMany({

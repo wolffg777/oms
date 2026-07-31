@@ -1,6 +1,6 @@
-.sku-row {
+.adj-row {
   display: grid;
-  grid-template-columns: 1fr 120px;
+  grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr;
   align-items: center;
 
   width: 100%;
@@ -20,23 +20,28 @@
   transition: background-color 0.15s ease;
 }
 
-.sku-row:last-child {
+.adj-row:last-child {
   border-bottom: none;
 }
 
-.sku-row:hover {
+.adj-row:hover {
   background: #f8f9fa;
 }
 
-.sku-row:active {
+.adj-row:active {
   background: #eceff1;
 }
 
-.sku-name {
+.adj-date,
+.adj-name,
+.adj-type,
+.adj-pieces,
+.adj-skus {
   color: #333;
 }
 
-.sku-quantity {
+.adj-pieces,
+.adj-skus {
   text-align: center;
   color: #666;
 }

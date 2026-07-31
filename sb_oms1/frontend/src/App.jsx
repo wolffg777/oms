@@ -4,6 +4,7 @@ import JobDetails from './pages/JobDetails'
 import SkuList from './pages/SkuList'
 import NavBar from './components/NavBar'
 import { Routes, Route } from 'react-router-dom'
+import AdjHist from './pages/AdjHist'
 
 function App() {
 
@@ -12,8 +13,8 @@ function App() {
       <NavBar />
       <Routes> 
         <Route path="/" element={<Home />}></Route>
-        {/* <Route path="/jobs/:id" element={<JobDetails />} /> */}
         <Route path="/skulist" element={<SkuList />}></Route>
+        <Route path="/adjhist" element={<AdjHist />}></Route>
       </Routes>
     </main>
   </>
