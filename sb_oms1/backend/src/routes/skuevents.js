@@ -21,12 +21,12 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// CALCULATE INV
+// CALCULATE INV (and total by SKU)
 /*
-curl -X GET http://localhost:3001/api/skuevents/allinv \
+curl -X GET http://localhost:3001/api/skuevents/allinv-skus \
 -H "Content-Type: application/json"
 */
-router.get("/allinv", async (req, res, next) => {
+router.get("/allinv-skus", async (req, res, next) => {
   try {
     const all_skus = await prisma.sku.findMany({
       orderBy: { createdAt: "desc" },
@@ -44,6 +44,48 @@ router.get("/allinv", async (req, res, next) => {
       skuTots.push({ skuId: sku.id, name: sku.name, quantity: tot });
     }
     res.status(200).json(skuTots);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// CALCULATE INV (and total by ADJ)
+/*
+curl -X GET http://localhost:3001/api/skuevents/allinv-adjs \
+-H "Content-Type: application/json"
+*/
+router.get("/allinv-adjs", async (req, res, next) => {
+  try {
+    const all_adjs = await prisma.invAdjustment.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    var adjTots = [];
+    // obviously inefficient, just implement groupBy later
+    for (const adj of all_adjs) {
+      const skuevents = await prisma.skuEvent.findMany({
+        where: { adjId: adj.id },
+        include: {
+          sku: true,
+        },
+      });
+      var tot = 0;
+      var skuNames = [];
+
+      for (const skue of skuevents) {
+        tot = tot + skue.mod;
+        skuNames.push(skue.sku.name);
+      }
+
+      adjTots.push({
+        adjId: adj.id,
+        name: adj.name,
+        type: adj.type,
+        // turn to set to remove duplicates
+        skuNames: [...new Set(skuNames)],
+        quantity: tot,
+      });
+    }
+    res.status(200).json(adjTots);
   } catch (err) {
     next(err);
   }
