@@ -8,8 +8,8 @@ function JobDetails() {
   const { id } = useParams();
   const { data: job, isLoading, error } = useJob(id)
 
-  if (isLoading) return <div>Loading jobs...</div>
-  if (error) return <div>Failed to load jobs.</div>
+  if (isLoading) return <div>Loading job...</div>
+  if (error) return <div>Failed to load job.</div>
 
   return (
       <div>

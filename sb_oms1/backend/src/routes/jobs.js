@@ -134,7 +134,7 @@ router.patch("/:id", async (req, res, next) => {
 
 // DELETE BY ID
 /*
-curl -X DELETE http://localhost:3001/api/jobs/b998ac28-2b98-47e8-bb72-5d897a4dae95 \
+curl -X DELETE http://localhost:3001/api/jobs/d7e62491-a93b-4202-a190-c9819ccd9680 \
   -H "Content-Type: application/json"
 */
 
