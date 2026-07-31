@@ -5,5 +5,8 @@ const api = axios.create({
 });
 
 export const skueventsApi = {
-  getAllInv: () => api.get("/api/skuevents/allinv").then((r) => r.data),
+  getAllInvSkus: () =>
+    api.get("/api/skuevents/allinv-skus").then((r) => r.data),
+  getAllInvAdjs: () =>
+    api.get("/api/skuevents/allinv-adjs").then((r) => r.data),
 };

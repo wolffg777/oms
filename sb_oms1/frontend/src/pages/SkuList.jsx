@@ -1,10 +1,10 @@
 import "../css/SkuList.css";
 import { useSkus } from "../hooks/useSkus";
-import { useGetAllInv } from "../hooks/useSkuEvents";
+import { useGetAllInvSkus } from "../hooks/useSkuEvents";
 import Sku from "../components/Sku";
 
 function SkuList() {
-  const { data: allInv, isLoadingInv, errorInv } = useGetAllInv();
+  const { data: allInv, isLoadingInv, errorInv } = useGetAllInvSkus();
 
   if (isLoadingInv) return <div>Loading Inv...</div>;
   if (errorInv) return <div>Failed to load Inv.</div>;
