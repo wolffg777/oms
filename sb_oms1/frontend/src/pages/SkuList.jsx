@@ -2,8 +2,14 @@ import "../css/SkuList.css";
 import { useSkus } from "../hooks/useSkus";
 import { useGetAllInvSkus } from "../hooks/useSkuEvents";
 import Sku from "../components/Sku";
+import SkuDetails from "../components/SkuDetails";
+import { useState } from "react";
 
 function SkuList() {
+  const [selectedSku, setSelectedSku] = useState(null);
+  
+  const splitView = selectedSku !== null;
+
   const { data: allInv, isLoadingInv, errorInv } = useGetAllInvSkus();
 
   if (isLoadingInv) return <div>Loading Inv...</div>;
@@ -23,12 +29,13 @@ function SkuList() {
   skus.forEach(sku => {
     const match = allInvMap.get(sku.id);
     if (match) {
-      skuQuants.push({ skuId: sku.id, name: sku.name, quantity: match.quantity });
+      skuQuants.push({ ...sku, quantity: match.quantity });
     }
   });
 
   return (
-    <div className="skuList-main" style={{ marginLeft: '220px' }}>
+    <div className={`sku-page ${splitView ? "split" : ""}`} style={{ marginLeft: "260px" }}>
+    <div className="sku-list">
       <h1>SKU Inventory</h1>
       <div className="sku-table">
         <div className="sku-header">
@@ -36,11 +43,18 @@ function SkuList() {
           <div>Quantity</div>
         </div>
         {skuQuants.map((sku) => (
-          <Sku sku={sku} key={sku.skuId} />
+          <Sku sku={sku} key={sku.skuId} onSelect={setSelectedSku} />
         ))}
       </div>
     </div>
+    {splitView && (
+            <SkuDetails
+                sku={selectedSku}
+                onClose={() => setSelectedSku(null)}
+            />
+        )}
+    </div>
   );
-}
+  }
 
 export default SkuList;

@@ -5,9 +5,11 @@ const prisma = require("../prismaClient.js");
 // Inventory Adjustments Table -- Full Crud (no update)
 
 // CREATE ADJ (not connected to Job)
-// curl -X POST http://localhost:3001/api/adjs \
-//   -H "Content-Type: application/json" \
-//   -d '{"name":"Inv1","type":"recount"}'
+/*
+curl -X POST http://localhost:3001/api/adjs \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Inv2","type":"shipment"}'
+*/
 router.post("/", async (req, res, next) => {
   try {
     const { name, type } = req.body;

@@ -7,7 +7,7 @@ const prisma = require("../prismaClient.js");
 /*
 curl -X POST http://localhost:3001/api/skuevents \
   -H "Content-Type: application/json" \
-  -d '{"skuId":"c5c3613a-39b1-48a3-b482-c386ae3615ce","adjId":"47c9e94b-7aae-4370-9bd6-1f4f3e8ef595","mod":5}'
+  -d '{"skuId":"c5c3613a-39b1-48a3-b482-c386ae3615ce","adjId":"61631dfe-32d7-49e7-9e81-0bb34adb30c7","mod":10}'
 */
 router.post("/", async (req, res, next) => {
   try {

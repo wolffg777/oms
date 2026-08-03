@@ -51,7 +51,16 @@ curl -X GET http://localhost:3001/api/skus \
 router.get("/", async (req, res, next) => {
   try {
     const skus = await prisma.sku.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        events: {
+          include: {
+            adj: true,
+          },
+        },
+      },
     });
     res.status(200).json(skus);
   } catch (err) {
@@ -65,6 +74,13 @@ router.get("/:id", async (req, res, next) => {
   try {
     const sku = await prisma.sku.findUnique({
       where: { id: req.params.id },
+      include: {
+        events: {
+          include: {
+            adj: true,
+          },
+        },
+      },
     });
     if (!sku) {
       res.status(404).json({ error: "Sku Not Found" });

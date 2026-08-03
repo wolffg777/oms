@@ -1,0 +1,194 @@
+.close-btn{
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+    color:#666;
+}
+
+.close-btn:hover{
+    color:black;
+}
+
+.sku-detail-panel{
+
+    animation:slideIn .25s ease;
+
+}
+
+@keyframes slideIn{
+
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.sku-detail-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.close-btn{
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:24px;
+    color:#777;
+}
+
+.close-btn:hover{
+    color:black;
+}
+
+.inventory-card,
+.sku-info-card,
+.history-card{
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+}
+
+.inventory-label{
+
+    color:#777;
+
+    font-size:.9rem;
+
+}
+
+.inventory-number{
+
+    font-size:3rem;
+
+    font-weight:bold;
+
+    margin-top:8px;
+
+}
+
+.detail-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.detail-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.detail-label{
+
+    color:#666;
+
+}
+
+.detail-value{
+
+    font-weight:600;
+
+}
+
+.history-card h3{
+
+    margin-bottom:16px;
+
+}
+
+.history-event{
+
+    display:flex;
+
+    gap:18px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.history-event:last-child{
+
+    border-bottom:none;
+
+}
+
+.history-mod{
+
+    min-width:60px;
+
+    text-align:center;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+.positive{
+
+    background:#34a853;
+
+}
+
+.negative{
+
+    background:#ea4335;
+
+}
+
+.history-title{
+
+    font-weight:600;
+
+}
+
+.history-date{
+
+    color:#888;
+
+    margin-top:4px;
+
+    font-size:.9rem;
+
+}
+
+.empty-history{
+
+    color:#888;
+
+}
+
+.sku-detail-card{
+
+    width:clamp(350px, 70%, 600px);
+
+}
