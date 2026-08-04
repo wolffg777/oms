@@ -17,7 +17,7 @@ function AdjHist() {
 
   if(!adjInv) return <div>Loading Inv...</div>;
 
-  var adjRet = []; 
+  let adjRet = []; 
 
   const adjInvMap = new Map(adjInv.map(item => [item.adjId, item]));
 

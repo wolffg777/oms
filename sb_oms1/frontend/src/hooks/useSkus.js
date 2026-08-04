@@ -1,9 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { skusApi } from "../api/skus";
 
-// export function useCreateSku() {
-// return useMutation
-// }
+export function useCreateSku() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: skusApi.create,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["skus"] }),
+  });
+}
 
 export function useSkus() {
   return useQuery({ queryKey: ["skus"], queryFn: skusApi.getAll });

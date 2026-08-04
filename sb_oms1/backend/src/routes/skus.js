@@ -96,8 +96,10 @@ router.get("/:id", async (req, res, next) => {
 // not necessary for this table, only will support deleting them in full
 
 // DELETE
-// curl -X DELETE http://localhost:3001/api/skus/808fe7d5-a988-4d18-8559-723d1471264e \
-// -H "Content-Type: application/json"
+/*
+curl -X DELETE http://localhost:3001/api/skus/7e580990-5dfb-42af-9fd7-5978cc123c8a \
+-H "Content-Type: application/json"
+*/
 router.delete("/:id", async (req, res, next) => {
   try {
     const sku = await prisma.sku.delete({

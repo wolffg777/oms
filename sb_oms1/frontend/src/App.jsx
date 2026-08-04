@@ -5,6 +5,7 @@ import SkuList from './pages/SkuList'
 import NavBar from './components/NavBar'
 import { Routes, Route } from 'react-router-dom'
 import AdjHist from './pages/AdjHist'
+import AdjCreate from './pages/AdjCreate'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/skulist" element={<SkuList />}></Route>
         <Route path="/adjhist" element={<AdjHist />}></Route>
+        <Route path="/adjcreate" element={<AdjCreate />}></Route>
       </Routes>
     </main>
   </>
