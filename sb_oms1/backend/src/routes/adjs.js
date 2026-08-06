@@ -8,13 +8,48 @@ const prisma = require("../prismaClient.js");
 /*
 curl -X POST http://localhost:3001/api/adjs \
   -H "Content-Type: application/json" \
-  -d '{"name":"Inv2","type":"shipment"}'
+  -d '{
+    "name": "Inv5",
+    "type": "shipment",
+    "items": [
+      { "skuId": "23c290e8-690a-49c3-88e2-d5cb1ac35865", "mod": 10 },
+      { "skuId": "c5c3613a-39b1-48a3-b482-c386ae3615ce", "mod": 5 }
+    ]
+  }'
 */
+/*
+// POST WITHOUT SKUES 
 router.post("/", async (req, res, next) => {
   try {
     const { name, type } = req.body;
     const adj = await prisma.invAdjustment.create({
       data: { name: name, type: type },
+    });
+    res.status(201).json(adj);
+  } catch (err) {
+    next(err);
+  }
+});
+*/
+
+// CREATE ADJ WITH SKUES
+router.post("/", async (req, res, next) => {
+  try {
+    const { name, type, items } = req.body;
+
+    const adj = await prisma.invAdjustment.create({
+      data: {
+        name: name,
+        type: type,
+        items: {
+          createMany: {
+            data: items,
+          },
+        },
+      },
+      include: {
+        items: true,
+      },
     });
     res.status(201).json(adj);
   } catch (err) {

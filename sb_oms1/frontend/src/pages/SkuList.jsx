@@ -7,7 +7,6 @@ import { useState } from "react";
 import SkuCreate from "../components/SkuCreate";
 
 function SkuList() {
-
   const [panel, setPanel] = useState({
       type: null,
       sku: null,
@@ -15,17 +14,27 @@ function SkuList() {
 
   const splitView = panel.type !== null;
 
-  const { data: allInv, isLoadingInv, errorInv } = useGetAllInvSkus();
+  const { 
+    data: allInv, 
+    isPending: isInvPending, 
+    isError: isInvError, 
+    error: invError 
+  } = useGetAllInvSkus();
 
-  if (isLoadingInv) return <div>Loading Inv...</div>;
-  if (errorInv) return <div>Failed to load Inv.</div>;
+  const { 
+    data: skus, 
+    isPending: isSkusPending, 
+    isError: isSkusError, 
+    error: skusError 
+  } = useSkus();
 
-  const { data: skus, isLoading, error } = useSkus();
+  if (isInvPending || isSkusPending) {
+    return <div style={{ marginLeft: "260px" }}>Loading...</div>;
+  }
 
-  if (isLoading) return <div>Loading SKUs...</div>;
-  if (error) return <div>Failed to load SKUs.</div>;
-
-  if(!allInv) return <div>Loading Inv...</div>;
+  if (isInvError || isSkusError) {
+    return <div style={{ marginLeft: "260px" }}>Error: {invError?.message || skusError?.message}</div>;
+  }
 
   let skuQuants = []; 
 

@@ -2,20 +2,32 @@ import "../css/AdjHist.css"
 import { useAdjs } from "../hooks/useAdjs"; 
 import { useGetAllInvAdjs } from "../hooks/useSkuEvents";
 import Adj from "../components/Adj"
+import { Link } from "react-router-dom";
+
 
 function AdjHist() {
 
-  const { data: adjInv, isLoading1, error1 } = useGetAllInvAdjs(); 
+  const { 
+    data: adjInv, 
+    isPending: isInvPending, 
+    isError: isInvError,
+    error: invError 
+  } = useGetAllInvAdjs(); 
 
-  if (isLoading1) return <div>Loading Inv...</div>;
-  if (error1) return <div>Failed to load Inv.</div>;
+  const { 
+    data: adjs, 
+    isPending: isAdjPending, 
+    isError: isAdjError, 
+    error: adjError
+  } = useAdjs(); 
 
-  const { data: adjs, isLoading, error } = useAdjs(); 
-  
-  if (isLoading) return <div>Loading Adjs...</div>;
-  if (error) return <div>Failed to load Adjs.</div>;
+  if (isInvPending || isAdjPending) {
+    return <div style={{ marginLeft: "260px" }}>Loading...</div>;
+  }
 
-  if(!adjInv) return <div>Loading Inv...</div>;
+  if (isInvError || isAdjError) {
+    return <div style={{ marginLeft: "260px" }}>Error: {invError?.message || adjError?.message}</div>;
+  }
 
   let adjRet = []; 
 
@@ -31,13 +43,16 @@ function AdjHist() {
   return (
     <div className="adjhist-main" style={{ marginLeft: '220px' }}>
       <h1>Adj Hist</h1>
+        <div className="adj-toolbar">
+          <Link to="/adjcreate" className="create-adj-btn">+ Create Adjustment</Link>
+      </div>
       <div className="adj-table">
         <div className="adj-header">
           <div>Date</div>
           <div>Name</div> 
           <div>Type</div>
-          <div>Pieces Moved</div>
           <div>Skus Moved</div>
+          <div>Pieces Moved</div>
         </div>
         {adjRet.map((adj) => (
           <Adj adj={adj} key={adj.adjId} />

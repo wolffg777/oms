@@ -1,9 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { adjsApi } from "../api/adjs";
 
-// export function useCreateAdj() {
-// return useMutation
-// }
+export function useCreateAdj() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: adjsApi.create,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["adjs"] }),
+  });
+}
 
 export function useAdjs() {
   return useQuery({ queryKey: ["adjs"], queryFn: adjsApi.getAll });
